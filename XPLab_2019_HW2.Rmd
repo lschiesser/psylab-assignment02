@@ -1,7 +1,7 @@
 ---
 title: "Homework Task 2 -- Basics in R"
 date: 'Due: Thursday, May 2 by 08:59 CET'
-author: ""
+author: "Lukas Schießer, Paribartan Humagain"
 output:
   html_document
 ---
@@ -44,15 +44,15 @@ you 'knit' the document.
 
 # UNCOMMENT THE CODE
 
-#R.version
+R.version
 
-#sessionInfo()
+sessionInfo()
 ```
 
 
 **Which version of R are you running? On which platform are you running it?**
 
-*ANSWER:*
+*ANSWER: R version 3.5.1 (2018-07-02)*
 
 (your answer here)
 
@@ -69,12 +69,14 @@ to load the package and show the `sessionInfo` again.
 
 # YOUR CODE HERE
 
+library(tidyverse)
+
 ```
 
 
 **Which version of `tidyverse` do you have installed?**
 
-*ANSWER:*
+*ANSWER: 1.2.1*
 
 (your answer here)
 
@@ -98,8 +100,7 @@ using the `print()` function.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-
-
+toothgrowth <- as_tibble(ToothGrowth)
 ```
 
 
