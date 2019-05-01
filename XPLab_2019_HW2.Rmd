@@ -1,7 +1,7 @@
 ---
 title: "Homework Task 2 -- Basics in R"
 date: 'Due: Thursday, May 2 by 08:59 CET'
-author: "Lukas Schießer, Paribartan Humagain"
+author: "Paribartan Humagain, <Lukas Schiesser"
 output:
   html_document
 ---
@@ -40,21 +40,21 @@ uncomment it. Then the correct output will automatically appear when
 you 'knit' the document.
 
 
-```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # UNCOMMENT THE CODE
 
 R.version
 
 sessionInfo()
-```
+
 
 
 **Which version of R are you running? On which platform are you running it?**
 
-*ANSWER: R version 3.5.1 (2018-07-02)*
+*ANSWER:*
 
-(your answer here)
+R version 3.5.3 (2019-03-11)
 
 
 b.
@@ -67,18 +67,21 @@ to load the package and show the `sessionInfo` again.
 
 ```{r tidy = FALSE, message = TRUE, warning = TRUE, error = FALSE}
 
-# YOUR CODE HERE
-
+# code to load package
 library(tidyverse)
 
-```
+#code to show sessionInfo
 
+sessionInfo()
+````
 
 **Which version of `tidyverse` do you have installed?**
 
-*ANSWER: 1.2.1*
+*ANSWER:*
+#code to find package version
+packageVersion("tidyverse")
 
-(your answer here)
+tidyverse 1.2.1
 
 
 ___
@@ -97,11 +100,12 @@ Convert the `ToothGrowth` data frame into a tibble using `as_tibble()`. Put
 this in a new variable called `iris_tibble`. Then print the tibble
 using the `print()` function.
 
-```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
-
+````{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 # YOUR CODE HERE
-toothgrowth <- as_tibble(ToothGrowth)
-```
+iris_tibble = as_tibble(ToothGrowth)
+print(iris_tibble)
+````
+
 
 
 
@@ -109,28 +113,27 @@ toothgrowth <- as_tibble(ToothGrowth)
 
 *ANSWER:*
 
-(your answer here)
+The variable "supp" is a Factor.
 
 
 b.
 ---
 
 Starting from the complete `ToothGrowth` data set, filter only the guinea pigs
-that were give orange juice.
+that were given orange juice.
 
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
 
-
+filter(ToothGrowth, supp == "VC")
 ```
 
 **How many datapoints (i.e. guinea pigs) are left?**
 
 *ANSWER:*
 
-(your answer here)
-
+30
 
 
 c.
@@ -142,7 +145,7 @@ that received ascorbic acid and had a dosage of 1.0mg or greater.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-
+filter(ToothGrowth, supp == "OJ" & dose>= 1.0)
 
 
 ```
@@ -159,8 +162,8 @@ instructions read the help page for `summarise()`.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-
-
+tooth_growth_tibble <- ToothGrowth %>% group_by(supp) %>% summarise(mean_len = mean(len))
+print(tooth_growth_tibble)
 ```
 
 
@@ -168,7 +171,7 @@ instructions read the help page for `summarise()`.
 
 *ANSWER:*
 
-(your answer here)
+20.66333	
 
 
 ___
@@ -186,7 +189,7 @@ supplement types in different colours.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-
+plot(ToothGrowth$dose,ToothGrowth$len)
 
 ```
 
@@ -197,7 +200,7 @@ supplement types in different colours.
 
 (your answer here)
 
-
+yes
 ___
 
 End of homework sheet
