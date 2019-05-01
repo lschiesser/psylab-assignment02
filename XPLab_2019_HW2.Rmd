@@ -40,7 +40,7 @@ uncomment it. Then the correct output will automatically appear when
 you 'knit' the document.
 
 
-{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+````{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # UNCOMMENT THE CODE
 
@@ -48,13 +48,15 @@ R.version
 
 sessionInfo()
 
+```
+
 
 
 **Which version of R are you running? On which platform are you running it?**
 
-*ANSWER:*
+*ANSWER: R version 3.5.1 (2018-07-02)*
 
-R version 3.5.3 (2019-03-11)
+
 
 
 b.
@@ -73,15 +75,14 @@ library(tidyverse)
 #code to show sessionInfo
 
 sessionInfo()
-````
+
+```
 
 **Which version of `tidyverse` do you have installed?**
 
-*ANSWER:*
-#code to find package version
-packageVersion("tidyverse")
+*ANSWER: tidyverse 1.2.1*
 
-tidyverse 1.2.1
+
 
 
 ___
@@ -100,20 +101,20 @@ Convert the `ToothGrowth` data frame into a tibble using `as_tibble()`. Put
 this in a new variable called `iris_tibble`. Then print the tibble
 using the `print()` function.
 
-````{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 # YOUR CODE HERE
 iris_tibble = as_tibble(ToothGrowth)
 print(iris_tibble)
-````
+```
 
 
 
 
 **Which data type is the variable "supp"?**
 
-*ANSWER:*
+*ANSWER: The variable "supp" is a Factor.*
 
-The variable "supp" is a Factor.
+
 
 
 b.
@@ -126,14 +127,13 @@ that were given orange juice.
 
 # YOUR CODE HERE
 
-filter(ToothGrowth, supp == "VC")
+filter(ToothGrowth, supp == "OJ")
 ```
 
 **How many datapoints (i.e. guinea pigs) are left?**
 
-*ANSWER:*
+*ANSWER: 30*
 
-30
 
 
 c.
@@ -145,7 +145,7 @@ that received ascorbic acid and had a dosage of 1.0mg or greater.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-filter(ToothGrowth, supp == "OJ" & dose>= 1.0)
+filter(ToothGrowth, supp == "VC" & dose >= 1.0)
 
 
 ```
@@ -162,16 +162,18 @@ instructions read the help page for `summarise()`.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-tooth_growth_tibble <- ToothGrowth %>% group_by(supp) %>% summarise(mean_len = mean(len))
+tooth_growth_tibble <- ToothGrowth %>% 
+  group_by(supp) %>% 
+  summarise(mean_len = mean(len))
 print(tooth_growth_tibble)
 ```
 
 
 **What is the mean tooth length for guinea pigs that received Orange Juice?**
 
-*ANSWER:*
+*ANSWER: 20.66333*
 
-20.66333	
+	
 
 
 ___
@@ -189,18 +191,17 @@ supplement types in different colours.
 ```{r tidy = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 
 # YOUR CODE HERE
-plot(ToothGrowth$dose,ToothGrowth$len)
-
+ggplot(iris_tibble, aes(x = dose, y = len)) +
+  geom_point(aes(color = supp))
 ```
 
 
 **After visually inspecting the graph, does there seem to be any difference between the types of supplement?**
 
-*ANSWER:*
+*ANSWER: For the doses of 0.5 and 1.0 mg there seems to be a difference in favor of orange juice, but for 2.0 mg dosage there is a difference in favor of ascorbic acid. All in all, involving the mean when inspecting the graph, orange juice seems to enhance the length of odontoblasts in guinea pigs.*
 
 (your answer here)
 
-yes
 ___
 
 End of homework sheet
