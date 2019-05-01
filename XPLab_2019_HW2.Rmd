@@ -54,7 +54,7 @@ sessionInfo()
 
 **Which version of R are you running? On which platform are you running it?**
 
-*ANSWER: R version 3.5.1 (2018-07-02)*
+*ANSWER: R version 3.5.1 (2018-07-02), Windows*
 
 
 
